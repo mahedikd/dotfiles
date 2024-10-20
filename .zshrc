@@ -12,11 +12,18 @@ fi
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+# Set the directory we want to store tmux plugins
+TMUX_PLUGIN_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/tmux/plugins/tpm"
 
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+# Download Tmux Plugin Manager, if it's not there yet
+if [ ! -d "$TMUX_PLUGIN_DIR" ]; then
+   mkdir -p "$(dirname $TMUX_PLUGIN_DIR)"
+   git clone https://github.com/tmux-plugins/tpm "$TMUX_PLUGIN_DIR"
 fi
 
 # Source/Load zinit
@@ -119,11 +126,6 @@ fi
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-# Load and initialise completion system
-autoload -Uz compinit
-compinit
-
 
 # export NVM_DIR="$HOME/.config/nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
