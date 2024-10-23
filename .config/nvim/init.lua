@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 vim.o.colorcolumn = "90"
 vim.o.encoding = "utf-8"
 vim.o.fileencoding = "utf-8"
+vim.o.relativenumber = true
 
 local autocmd = vim.api.nvim_create_autocmd
 -- Change working directory to current file

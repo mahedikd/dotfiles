@@ -49,5 +49,4 @@ ensure_packages() {
     fi
 }
 
-# ensure_packages zoxide git curl docker wget btop 
-ensure_packages zoxide git curl wget btop ripgrep fzf neovim nano tmux python3 python3-pip python3-venv nodejs npm fastfetch kitty zsh stow keepassxc
+ensure_packages zoxide git curl wget btop ripgrep fzf neovim nano tmux python3 python3-pip python3-venv nodejs npm fastfetch kitty zsh stow keepassxc docker
