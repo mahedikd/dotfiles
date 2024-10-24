@@ -117,6 +117,7 @@ elif [[ "$os_id" == "kali" || "$os_id" == "ubuntu" ]]; then
   if [[ "$os_id" == "kali" ]]; then
     alias burp='java -jar ~/burpsuite/burploaderkeygen.jar > /dev/null 2>&1 &'
     alias kex='echo -ne "\033]0;Starting Server\007" && clear;if HOME=/root;USER=root;sudo -u root LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgcc_s.so.1 nohup vncserver :1 -localhost no -name "NetHunter KeX" >/dev/null 2>&1 </dev/null;then echo "Server started! Closing terminal..";else echo -ne "\033[0;31mServer already started! \n";fi && sleep 2 && exit'
+    . "/root/.deno/env"
   fi
 
 else
