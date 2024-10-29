@@ -1,5 +1,9 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.o.termguicolors = true
 vim.o.colorcolumn = "90"
 vim.o.encoding = "utf-8"
 vim.o.fileencoding = "utf-8"

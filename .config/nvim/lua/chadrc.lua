@@ -34,5 +34,13 @@ M.nvdash = {
   load_on_startup = true,
 }
 
+M.plugins = {
+  require("nvim-tree").setup({
+    view = {
+      side = "right"
+    }
+  })
+}
+
 
 return M
