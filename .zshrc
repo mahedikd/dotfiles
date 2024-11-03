@@ -92,7 +92,7 @@ alias htop='btop'
 alias nano='nano -lmq'
 alias tar_comp='tar -cvzf'
 alias tar_decomp='tar -xvzf'
-alias vc='verdaccio'
+alias lz='lazygit'
 
 os_id=$(cat /etc/os-release | awk -F= '$1 == "ID" {print $2}')
 
@@ -118,6 +118,7 @@ elif [[ "$os_id" == "kali" || "$os_id" == "ubuntu" ]]; then
     alias burp='java -jar ~/burpsuite/burploaderkeygen.jar > /dev/null 2>&1 &'
     alias kex='echo -ne "\033]0;Starting Server\007" && clear;if HOME=/root;USER=root;sudo -u root LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgcc_s.so.1 nohup vncserver :1 -localhost no -name "NetHunter KeX" >/dev/null 2>&1 </dev/null;then echo "Server started! Closing terminal..";else echo -ne "\033[0;31mServer already started! \n";fi && sleep 2 && exit'
     alias cs='code-server'
+    alias vc='verdaccio'
     . "/root/.deno/env"
   fi
 
@@ -129,6 +130,9 @@ fi
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 # export NVM_DIR="$HOME/.config/nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
