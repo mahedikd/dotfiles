@@ -88,11 +88,11 @@ alias vim='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias c='clear'
-alias htop='btop'
 alias nano='nano -lmq'
 alias tar_comp='tar -cvzf'
 alias tar_decomp='tar -xvzf'
-alias lz='lazygit'
+alias lzg='lazygit'
+alias lzd='lazydocker'
 
 os_id=$(cat /etc/os-release | awk -F= '$1 == "ID" {print $2}')
 
