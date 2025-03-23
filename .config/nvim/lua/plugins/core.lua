@@ -48,6 +48,23 @@ return {
         section_separators = "",
         component_separators = "",
       },
+      sections = {
+        lualine_z = {
+          function()
+            local bufnr = vim.api.nvim_get_current_buf()
+            local clients = vim.lsp.get_clients({ bufnr = bufnr })
+            if #clients == 0 then
+              return ""
+            end
+
+            local client_names = {}
+            for _, client in pairs(clients) do
+              table.insert(client_names, client.name)
+            end
+            return "\u{f085} " .. table.concat(client_names, "|")
+          end,
+        },
+      },
     },
   },
   {
