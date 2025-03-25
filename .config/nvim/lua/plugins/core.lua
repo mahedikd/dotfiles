@@ -11,7 +11,7 @@ return {
       ensure_installed = {
         "stylua",
         "lua-language-server",
-        "shellcheck",
+        "bash-language-server",
         "shfmt",
         "typescript-language-server",
         "biome",
@@ -37,6 +37,16 @@ return {
         bash = { "shfmt" },
         zsh = { "shfmt" },
         python = {}, -- use ruff as fallback,
+      },
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        bashls = {
+          filetypes = { "sh", "zsh" },
+        },
       },
     },
   },
