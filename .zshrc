@@ -5,11 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 # Set the directory we want to store tmux plugins
@@ -113,6 +108,15 @@ elif [[ "$os_id" == "kali" || "$os_id" == "ubuntu" ]]; then
   alias remove='sudo apt purge'
   alias aptclean='sudo apt autoremove && sudo apt autoclean && sudo apt clean'
   alias jp='jupyter lab --allow-root --ip="0.0.0.0" --port=8888 > /dev/null 2>&1 &'
+
+  export GOROOT=/usr/lib/go
+  export GOPATH=$HOME/go
+  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+  export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   
   if [[ "$os_id" == "kali" ]]; then
     alias burp='java -jar ~/burpsuite/burploaderkeygen.jar > /dev/null 2>&1 &'
@@ -127,13 +131,6 @@ else
 fi
 
 # Shell integrations
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
-
-export GOROOT=/usr/lib/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-# export NVM_DIR="$HOME/.config/nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
