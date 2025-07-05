@@ -22,4 +22,10 @@ return {
       require("better_escape").setup()
     end,
   },
+  {
+    "benomahony/uv.nvim",
+    opts = {
+      picker_integration = true,
+    },
+  }
 }
