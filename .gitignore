@@ -2,3 +2,8 @@ nvm
 lazygit
 lazydocker
 go
+.config/code-server
+.config/configstore/update-notifier-@google
+.config/fish/conf.d
+.config/htop
+.config/uv
