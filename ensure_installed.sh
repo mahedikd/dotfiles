@@ -49,4 +49,4 @@ ensure_packages() {
   fi
 }
 
-ensure_packages git curl wget ripgrep fzf nano tmux python3 python3-pip python-is-python3 python3-venv xclip unzip tree
+ensure_packages git curl wget ripgrep fzf nano tmux python3 python3-pip python-is-python3 python3-venv xclip unzip tree nodejs npm build-essential

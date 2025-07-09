@@ -88,6 +88,7 @@ alias tar_comp='tar -cvzf'
 alias tar_decomp='tar -xvzf'
 alias lzg='lazygit'
 alias lzd='lazydocker'
+alias venv='source .venv/bin/activate'
 
 os_id=$(cat /etc/os-release | awk -F= '$1 == "ID" {print $2}')
 
@@ -107,12 +108,10 @@ elif [[ "$os_id" == "kali" || "$os_id" == "ubuntu" ]]; then
   alias install='sudo apt install'
   alias remove='sudo apt purge'
   alias aptclean='sudo apt autoremove && sudo apt autoclean && sudo apt clean'
-  alias jp='jupyter lab --allow-root --ip="0.0.0.0" --port=8888 > /dev/null 2>&1 &'
 
   export GOROOT=/usr/lib/go
   export GOPATH=$HOME/go
   export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-  export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -123,6 +122,8 @@ elif [[ "$os_id" == "kali" || "$os_id" == "ubuntu" ]]; then
     alias kex='echo -ne "\033]0;Starting Server\007" && clear;if HOME=/root;USER=root;sudo -u root LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgcc_s.so.1 nohup vncserver :1 -localhost no -name "NetHunter KeX" >/dev/null 2>&1 </dev/null;then echo "Server started! Closing terminal..";else echo -ne "\033[0;31mServer already started! \n";fi && sleep 2 && exit'
     alias cs='code-server'
     alias vc='verdaccio'
+    . "$HOME/.local/bin/env"
+    export PATH="$PATH:/opt/nvim-linux-arm64/bin"
     . "/root/.deno/env"
   fi
 
@@ -133,4 +134,5 @@ fi
 # Shell integrations
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
+
 
