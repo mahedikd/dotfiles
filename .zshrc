@@ -92,7 +92,7 @@ case "$os_id" in
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
     if [[ "$os_id" == "kali" ]]; then
-      if [[ "$arch" == "aarch64" ]]; then
+      if [[ "$(uname -m)" == "aarch64" ]]; then
         alias cs='code-server'
         alias vc='verdaccio'
         NVM_HOME="${XDG_DATA_HOME:-${HOME}/.nvm}"
