@@ -86,17 +86,15 @@ case "$os_id" in
     alias remove='sudo apt purge'
     alias aptclean='sudo apt autoremove && sudo apt autoclean && sudo apt clean'
 
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
     if [[ "$os_id" == "kali" ]]; then
       if [[ "$(uname -m)" == "aarch64" ]]; then
         alias cs='code-server'
         alias vc='verdaccio'
-        NVM_HOME="${XDG_DATA_HOME:-${HOME}/.nvm}"
-        UV_LOCATION="${XDG_DATA_HOME:-${HOME}/.local/bin}/uv"
+
+        NVM_HOME="${HOME}/.nvm"
+        UV_LOCATION="${HOME}/.local/bin/uv"
         NVIM_LOCATION="/opt/nvim-linux-arm64/bin"
         [[ -d "$NVM_HOME" ]] || curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
         [[ -f "$UV_LOCATION" ]] || curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -105,12 +103,18 @@ case "$os_id" in
           sudo rm -rf /opt/nvim
           sudo tar -C /opt -xzf nvim-linux-arm64.tar.gz
         fi
+
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
         export PATH="$PATH:/opt/nvim-linux-arm64/bin"
       fi
+
     elif [[ "$os_id" == "ubuntu" ]]; then
-      FZF_HOME="${XDG_DATA_HOME:-${HOME}/.fzf}"
-      NVM_HOME="${XDG_DATA_HOME:-${HOME}/.nvm}"
-      UV_LOCATION="${XDG_DATA_HOME:-${HOME}/.local/bin}/uv"
+ 
+      FZF_HOME="${HOME}/.fzf"
+      NVM_HOME="${HOME}/.config/nvm"
+      UV_LOCATION="${HOME}/.local/bin/uv"
       NVIM_LOCATION="/opt/nvim-linux-x86_64/bin"
       [[ -d "$FZF_HOME" ]] || { git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all; }
       [[ -d "$NVM_HOME" ]] || curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
@@ -120,6 +124,10 @@ case "$os_id" in
         sudo rm -rf /opt/nvim
         sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
       fi
+
+      export NVM_DIR="$HOME/.config/nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
       export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
     fi
     ;;
@@ -137,3 +145,6 @@ eval "$(zoxide init --cmd cd zsh)"
 export GOROOT=/usr/lib/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+
+. "$HOME/.local/share/../bin/env"
