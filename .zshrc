@@ -145,6 +145,3 @@ eval "$(zoxide init --cmd cd zsh)"
 export GOROOT=/usr/lib/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-
-
-. "$HOME/.local/share/../bin/env"
