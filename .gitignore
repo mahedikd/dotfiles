@@ -7,3 +7,4 @@ go
 .config/fish/conf.d
 .config/htop
 .config/uv
+.config/nvim/lazy-lock.json
