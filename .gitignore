@@ -8,3 +8,5 @@ go
 .config/htop
 .config/uv
 .config/nvim/lazy-lock.json
+.config/nextjs-nodejs
+.config/payload-nodejs
