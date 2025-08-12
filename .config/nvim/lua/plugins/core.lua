@@ -14,7 +14,9 @@ return {
         "bash-language-server",
         "shfmt",
         "typescript-language-server",
-        "biome",
+        -- "biome",
+        "prettierd",
+        "eslint_d",
         "html-lsp",
         "css-lsp",
         "pyright",
@@ -27,12 +29,12 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
-        css = { "biome" },
-        html = { "biome" },
-        javascript = { "biome" },
-        typescript = { "biome" },
-        jsx = { "biome" },
-        tsx = { "biome" },
+        css = { "prettierd" },
+        html = { "prettierd" },
+        javascript = { "prettierd", "eslint_d" },
+        typescript = { "prettierd", "eslint_d" },
+        jsx = { "prettierd", "eslint_d" },
+        tsx = { "prettierd", "eslint_d" },
         sh = { "shfmt" },
         bash = { "shfmt" },
         zsh = { "shfmt" },
@@ -81,6 +83,8 @@ return {
     "folke/snacks.nvim",
     opts = {
       picker = {
+        hidden = true,
+        ignored = true,
         sources = {
           explorer = {
             layout = { layout = { position = "right" } },
