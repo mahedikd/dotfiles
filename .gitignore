@@ -10,3 +10,10 @@ go
 .config/nvim/lazy-lock.json
 .config/nextjs-nodejs
 .config/payload-nodejs
+.config/Code
+.config/RedisInsight
+.config/Thonny
+.config/bruno
+.config/com.strapi
+.config/dconf
+.config/mimeapps.list

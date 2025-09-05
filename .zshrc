@@ -141,7 +141,4 @@ source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
-# --- Go Environment ---
-export GOROOT=/usr/lib/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+PATH=~/.console-ninja/.bin:$PATH
