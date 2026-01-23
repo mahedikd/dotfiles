@@ -17,3 +17,6 @@ go
 .config/com.strapi
 .config/dconf
 .config/mimeapps.list
+.config/Antigravity
+.config/crossnote
+.config/gopls/prompt
