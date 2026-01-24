@@ -38,7 +38,7 @@ return {
   },
   -- 2. Mason for Go Binaries
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "stylua",
