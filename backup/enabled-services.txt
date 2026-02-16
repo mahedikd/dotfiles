@@ -1,9 +1,11 @@
 cups.path
 bluetooth.service
+coolercontrold.service
 cronie.service
 cups.service
 docker.service
 getty@.service
+lm_sensors.service
 ModemManager.service
 NetworkManager-dispatcher.service
 NetworkManager-wait-online.service
@@ -17,6 +19,8 @@ sddm.service
 sshd.service
 systemd-timesyncd.service
 tailscaled.service
+vmware-networks.service
+vmware-usbarbitrator.service
 cups.socket
 systemd-userdbd.socket
 remote-fs.target
@@ -24,4 +28,4 @@ fstrim.timer
 pamac-cleancache.timer
 pamac-mirrorlist.timer
 
-25
+29

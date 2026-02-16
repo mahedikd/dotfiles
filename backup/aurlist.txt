@@ -1,0 +1,8 @@
+coolercontrold-bin
+lazydocker-bin
+localsend-bin
+ludusavi-bin
+openbangla-keyboard-bin
+python-backports-zstd
+vmware-keymaps
+vmware-workstation

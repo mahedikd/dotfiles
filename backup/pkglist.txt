@@ -6,12 +6,15 @@ alsa-firmware
 alsa-utils
 amd-ucode
 android-tools
+appmenu-gtk-module
 ark
 audiocd-kio
 avahi
 b43-fwcutter
+bandwhich
 base
 base-devel
+bleachbit
 bluedevil
 boxbuddy
 brave-browser
@@ -19,6 +22,7 @@ breeze-gtk
 breeze5
 btrfs-progs
 cloudflared
+coolercontrold-bin
 cpupower
 cronie
 cryptsetup
@@ -36,8 +40,10 @@ e2fsprogs
 ecryptfs-utils
 efibootmgr
 elisa
+ex-vi-compat
 exfatprogs
 f2fs-tools
+fastfetch
 ffmpeg
 ffmpegthumbs
 filelight
@@ -47,6 +53,8 @@ fzf
 gearlever
 glibc-locales
 gnome-themes-extra
+go
+godot
 grub
 grub-btrfs
 grub-theme-manjaro
@@ -58,7 +66,6 @@ gst-plugins-ugly
 gtk3
 gufw
 gwenview
-heroic-games-launcher
 htop
 inetutils
 install-grub
@@ -108,7 +115,11 @@ libpamac-flatpak-plugin
 libva-intel-driver
 libxnvctrl
 linux612
+linux612-headers
 linux612-nvidia-open
+linux618
+linux618-headers
+linux618-nvidia-open
 localsend-bin
 logrotate
 ludusavi-bin
@@ -141,7 +152,6 @@ modemmanager
 mtpfs
 nano
 nano-syntax-highlighting
-neofetch
 neovim
 networkmanager
 networkmanager-l2tp
@@ -168,6 +178,7 @@ os-prober
 pamac-cli
 pamac-gtk3
 pamac-tray-icon-plasma
+papirus-folders
 papirus-icon-theme
 partitionmanager
 perl
@@ -200,6 +211,7 @@ python-reportlab
 qbittorrent
 qt6-imageformats
 qt6-virtualkeyboard
+remmina
 rsync
 s-nail
 samba
@@ -225,6 +237,7 @@ texinfo
 timeshift
 timeshift-autosnap-manjaro
 tmux
+traceroute
 tree
 ttf-dejavu
 ttf-droid
@@ -238,8 +251,8 @@ unarchiver
 update-grub
 usb_modeswitch
 usbutils
-vi
 vlc
+vmware-workstation
 wget
 which
 wine
@@ -261,6 +274,7 @@ xorg-server
 xorg-twm
 xorg-xinit
 xorg-xkill
+yay
 zlib-ng
 zoxide
 zram-generator
