@@ -69,15 +69,17 @@ alias lzd='lazydocker'
 alias venv='source .venv/bin/activate'
 
 # --- OS-specific Aliases and Installs ---
-os_id=$(awk -F= '$1=="ID"{print $2}' /etc/os-release)
+os_id=$(awk -F= '$1=="ID"{print $2}' /etc/os-release | tr -d '"')
 
 case "$os_id" in
-  manjaro)
+  manjaro|endeavouros)
     alias update='sudo pacman -Syu'
     alias install='sudo pacman -S'
     alias remove='sudo pacman -Rcns'
     alias clean='sudo pacman -R $(pacman -Qdtq)'
     alias dbox='distrobox'
+
+    source /usr/share/nvm/init-nvm.sh
     ;;
   kali|ubuntu)
     alias update='sudo apt update'
