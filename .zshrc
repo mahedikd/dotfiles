@@ -72,7 +72,7 @@ alias venv='source .venv/bin/activate'
 os_id=$(awk -F= '$1=="ID"{print $2}' /etc/os-release | tr -d '"')
 
 case "$os_id" in
-  manjaro|endeavouros)
+  manjaro|cachyos)
     alias update='sudo pacman -Syu'
     alias install='sudo pacman -S'
     alias remove='sudo pacman -Rcns'
