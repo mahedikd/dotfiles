@@ -12,7 +12,7 @@
   "theme": {
     "mode": "system",
     "light": "Catppuccin Macchiato",
-    "dark": "Catppuccin Macchiato"
+    "dark": "Catppuccin Macchiato",
   },
   "base_keymap": "VSCode",
   "minimap": { "show": "never" },
@@ -22,49 +22,35 @@
   "inlay_hints": {
     "enabled": true,
     "show_type_hints": true,
-    "show_parameter_hints": true
+    "show_parameter_hints": true,
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
   "languages": {
     "Go": {
       "format_on_save": "on",
-      "formatter": "language_server"
+      "formatter": "language_server",
     },
     "TypeScript": {
       "format_on_save": "on",
-      "formatter": "language_server"
+      "formatter": "language_server",
     },
     "TSX": {
       "format_on_save": "on",
-      "formatter": "language_server"
+      "formatter": "language_server",
     },
     "JSON": {
       "format_on_save": "on",
-      "formatter": "language_server"
-    }
+      "formatter": "language_server",
+    },
   },
-  "wsl_connections": [
-    {
-      "distro_name": "Ubuntu-24.04",
-      "user": null,
-      "projects": [
-        { "paths": ["/home/kd"] },
-        { "paths": ["/home/kd/code/msgus"] },
-        { "paths": ["/home/kd/code/msgus_backend"] },
-        { "paths": ["/home/kd/code/msgus_go"] },
-        { "paths": ["/home/kd/code/msgus_next16"] },
-        { "paths": ["/home/kd/code/next-food-ecom"] }
-      ]
-    }
-  ],
   "agent": {
     "default_profile": "ask",
     "default_model": {
       "provider": "google",
-      "model": "gemini-1.5-pro"
-    }
-  }
+      "model": "gemini-1.5-pro",
+    },
+  },
 }
