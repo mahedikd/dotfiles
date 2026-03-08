@@ -145,7 +145,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # --- Go Environment ---
 export GOROOT=/usr/lib/go
-export GOPATH=$HOME/go
+export GOPATH=$HOME/.go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 export PATH=$HOME/.npm-global/bin:$PATH
