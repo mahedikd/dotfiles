@@ -149,3 +149,6 @@ export GOPATH=$HOME/.go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 export PATH=$HOME/.npm-global/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+# OpenFang
+export PATH=/home/kd/.openfang/bin:$PATH
