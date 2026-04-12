@@ -98,7 +98,8 @@ case "$os_id" in
     # Ensure tools can find the Docker socket
     export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
     export NVM_DIR="$HOME/.nvm"
-    [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
     ;;
 
   manjaro|cachyos)
