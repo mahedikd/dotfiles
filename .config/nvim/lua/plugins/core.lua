@@ -5,7 +5,7 @@ return {
       colorscheme = "catppuccin",
     },
   },
-  -- 1. Tree-sitter for Go syntax
+  -- 1. Tree-sitter
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -36,7 +36,7 @@ return {
       },
     },
   },
-  -- 2. Mason for Go Binaries
+  -- 2. Mason
   {
     "mason-org/mason.nvim",
     opts = {
@@ -62,7 +62,7 @@ return {
       },
     },
   },
-  -- 3. LSP Config with gopls workaround and settings
+  -- 3. LSP Config
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -138,12 +138,11 @@ return {
   --     },
   --   },
   -- },
-  -- 6. Custom Lualine (Preserved)
+  -- 6. Custom Lualine
   {
     "nvim-lualine/lualine.nvim",
     opts = {
       options = {
-        theme = "catppuccin",
         section_separators = "",
         component_separators = "",
       },
@@ -165,7 +164,7 @@ return {
       },
     },
   },
-  -- 7. Snacks Explorer (Preserved)
+  -- 7. Snacks Explorer
   {
     "folke/snacks.nvim",
     opts = {
