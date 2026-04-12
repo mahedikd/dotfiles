@@ -90,6 +90,13 @@ case "$os_id" in
     alias install='brew install'
     alias remove=‘brew uninstall’
     alias clean=‘brew cleanup’
+    # Faster Colima Management
+    alias d="docker"
+    alias dc="docker-compose"
+    alias cstart="colima start --vm-type vz --mount-type virtiofs --vz-rosetta"
+    alias cstop="colima stop"
+    # Ensure tools can find the Docker socket
+    export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
     export NVM_DIR="$HOME/.nvm"
     [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
     ;;
