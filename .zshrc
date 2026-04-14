@@ -89,13 +89,13 @@ case "$os_id" in
 macos)
   alias update='brew update && brew upgrade'
   alias install='brew install'
-  alias remove=‘brew uninstall’
-  alias clean=‘brew cleanup’
+  alias remove='brew uninstall'
+  alias clean='brew cleanup'
   # Faster Colima Management
-  alias d="docker"
-  alias dc="docker-compose"
-  alias cstart="colima start --vm-type vz --mount-type virtiofs --vz-rosetta"
-  alias cstop="colima stop"
+  alias d='docker'
+  alias dc='docker-compose'
+  alias cstart='colima start --vm-type vz --mount-type virtiofs --vz-rosetta'
+  alias cstop='colima stop'
   # Ensure tools can find the Docker socket
   export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
   export NVM_DIR="$HOME/.nvm"
@@ -108,9 +108,9 @@ macos)
 manjaro | cachyos)
   alias update='sudo pacman -Syu'
   alias install='sudo pacman -S'
-  alias remove=’sudo paceman -Rcns’
-  alias clean=‘sudo packman -R $(pacman -Qdtq)’
-  alias dbox=‘distrobox’
+  alias remove='sudo pacman -Rcns'
+  alias clean='sudo pacman -R $(pacman -Qdtq)'
+  alias dbox='distrobox'
   source /usr/share/nvm/init-nvm.sh
   ;;
 
@@ -118,8 +118,8 @@ kali | ubuntu)
   alias update='sudo apt update'
   alias upgrade='sudo apt upgrade -y'
   alias install='sudo apt install'
-  alias remove=‘sudo apt purge’
-  alias clean=‘sudo apt autoremove && sudo apt autoclean && sudo apt clean’
+  alias remove='sudo apt purge'
+  alias clean='sudo apt autoremove && sudo apt autoclean && sudo apt clean'
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
   # Variables for auto-install checks
