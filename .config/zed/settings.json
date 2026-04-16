@@ -19,11 +19,6 @@
   "soft_wrap": "editor_width",
   "autosave": "on_focus_change",
   "format_on_save": "on",
-  "inlay_hints": {
-    "enabled": true,
-    "show_type_hints": true,
-    "show_parameter_hints": true,
-  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false,
