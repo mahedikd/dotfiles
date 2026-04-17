@@ -131,7 +131,6 @@ kali | ubuntu)
 
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  export PATH="$PATH:$NVIM_LOCATION"
 
   if [[ "$os_id" == "ubuntu" ]]; then
     NVIM_LOCATION="/opt/nvim-linux-x86_64/bin"
@@ -139,8 +138,6 @@ kali | ubuntu)
       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
       sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
     fi
-    export NVM_DIR="$HOME/.config/nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     export PATH="$PATH:$NVIM_LOCATION"
   fi
   ;;
@@ -160,3 +157,9 @@ else
 fi
 
 export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+export ANDROID_HOME=$HOME/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/build-tools
