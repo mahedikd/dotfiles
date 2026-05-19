@@ -1,4 +1,7 @@
 {
+  "collaboration_panel": {
+    "dock": "left"
+  },
   "tab_size": 2,
   "show_edit_predictions": false,
   "relative_line_numbers": "enabled",
@@ -42,10 +45,12 @@
     },
   },
   "agent": {
+    "dock": "right",
     "default_profile": "ask",
     "default_model": {
-      "provider": "google",
-      "model": "gemini-1.5-pro",
+      "enable_thinking": true,
+      "provider": "ollama",
+      "model": "fredrezones55/Gemma-4-Uncensored-HauhauCS-Aggressive:e4b",
     },
   },
 }
