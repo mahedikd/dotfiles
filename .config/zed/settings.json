@@ -1,7 +1,8 @@
 {
+  "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "auto_update": false,
   "collaboration_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "tab_size": 2,
   "show_edit_predictions": false,
