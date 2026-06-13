@@ -5,6 +5,7 @@
     "dock": "left",
   },
   "tab_size": 2,
+  "hard_tabs": false,
   "show_edit_predictions": false,
   "relative_line_numbers": "enabled",
   "outline_panel": { "dock": "right" },
@@ -35,11 +36,23 @@
     },
     "TypeScript": {
       "format_on_save": "on",
-      "formatter": "language_server",
+      "formatter": "prettier",
     },
     "TSX": {
       "format_on_save": "on",
-      "formatter": "language_server",
+      "formatter": "prettier",
+    },
+    "JavaScript": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+    },
+    "Python": {
+      "format_on_save": "on",
+      "formatter": {
+        "language_server": {
+          "name": "ruff",
+        },
+      },
     },
     "JSON": {
       "format_on_save": "on",
