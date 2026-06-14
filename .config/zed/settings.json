@@ -1,7 +1,11 @@
 {
+  "debugger": {
+    "dock": "bottom"
+  },
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "auto_update": false,
   "collaboration_panel": {
+    "button": false,
     "dock": "left",
   },
   "tab_size": 2,
