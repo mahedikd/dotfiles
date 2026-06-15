@@ -170,3 +170,21 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # bun completions
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
+# Get NVMe/Disk TBW stats on both Linux and macOS
+nvme_stats() {
+  if [ "$(uname)" = "Darwin" ]; then
+    sudo smartctl -a /dev/disk0 | grep -i "Data Units Written"
+  elif [ "$(uname)" = "Linux" ]; then
+    local drive
+    drive=$(lsblk -dno NAME | grep -m1 nvme)
+    if [ -n "$drive" ]; then
+      sudo smartctl -a "/dev/$drive" | grep -i "Data Units Written"
+    else
+      echo "Error: No NVMe drive found via lsblk." >&2
+      return 1
+    fi
+  else
+    echo "Error: Unsupported OS." >&2
+    return 1
+  fi
+}
