@@ -1,6 +1,6 @@
 {
   "debugger": {
-    "dock": "bottom"
+    "dock": "bottom",
   },
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "auto_update": false,
@@ -10,7 +10,11 @@
   },
   "tab_size": 2,
   "hard_tabs": false,
-  "show_edit_predictions": false,
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+  },
+  "show_edit_predictions": true,
   "relative_line_numbers": "enabled",
   "outline_panel": { "dock": "right" },
   "git_panel": { "dock": "right" },
