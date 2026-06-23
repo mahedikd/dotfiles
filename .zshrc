@@ -12,6 +12,10 @@ else
   os_id=$(awk -F= '$1=="ID"{print $2}' /etc/os-release | tr -d '"')
 fi
 
+# --- Completions Initialization ---
+# Best practice: Run compinit before loading complex completion plugins
+autoload -Uz compinit && compinit
+
 # --- Plugin Directories ---
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 TMUX_PLUGIN_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/tmux/plugins/tpm"
@@ -37,17 +41,17 @@ zinit snippet OMZP::sudo
 
 if [[ "$os_id" != "macos" ]]; then
   [[ "$os_id" == "manjaro" || "$os_id" == "cachyos" ]] && zinit snippet OMZP::archlinux
+  [[ "$os_id" == "fedora" ]] && zinit snippet OMZP::dnf
   zinit snippet OMZP::command-not-found
 fi
 
-# --- Completions ---
-autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # --- Completion Styling ---
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':completion:*' menu no 
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # --- Prompt ---
@@ -99,7 +103,7 @@ macos)
   # Ensure tools can find the Docker socket
   export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
   export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh" # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
   export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
   export CPPFLAGS="-I/opt/homebrew/opt/openjdk@21/include"
@@ -114,6 +118,18 @@ manjaro | cachyos)
   source /usr/share/nvm/init-nvm.sh
   ;;
 
+fedora)
+  alias update='sudo dnf upgrade --refresh'
+  alias install='sudo dnf install'
+  alias remove='sudo dnf remove'
+  alias clean='sudo dnf autoremove'
+  alias dbox='distrobox'
+  
+  # Set up NVM if manually installed via curl/git, otherwise handle default path
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  ;;
+
 kali | ubuntu)
   alias update='sudo apt update'
   alias upgrade='sudo apt upgrade -y'
@@ -122,7 +138,6 @@ kali | ubuntu)
   alias clean='sudo apt autoremove && sudo apt autoclean && sudo apt clean'
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-  # Variables for auto-install checks
   UV_LOCATION="${HOME}/.local/bin/uv"
   NVM_HOME="${HOME}/.nvm"
 
@@ -152,12 +167,14 @@ export GOPATH=$HOME/.go
 if [[ "$os_id" == "macos" ]]; then
   export PATH=$PATH:$GOPATH/bin
 else
-  export GOROOT=/usr/lib/go
+  # Linux specific Go resolution path fallback 
+  [[ -d "/usr/lib/go" ]] && export GOROOT=/usr/lib/go
+  [[ -d "/usr/lib64/golang" ]] && export GOROOT=/usr/lib64/golang # Fedora specific location
   export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 fi
 
 export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export ANDROID_HOME=$HOME/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
@@ -167,10 +184,9 @@ export PATH=$PATH:$ANDROID_HOME/build-tools
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-# bun completions
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
-# Get NVMe/Disk TBW stats on both Linux and macOS
+# NVMe/Disk TBW stats
 nvme_stats() {
   if [ "$(uname)" = "Darwin" ]; then
     sudo smartctl -a /dev/disk0 | grep -i "Data Units Written"
