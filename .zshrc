@@ -50,7 +50,7 @@ zinit cdreplay -q
 # --- Completion Styling ---
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no 
+zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
@@ -77,6 +77,7 @@ if [[ "$os_id" == "macos" ]]; then
 else
   alias ls='ls --color'
   alias ll='ls -la --color'
+  alias cpufreq='watch -n 1 sudo cpupower -c all frequency-info --freq -m'
 fi
 alias vim='nvim'
 alias vi='nvim'
@@ -124,7 +125,9 @@ fedora)
   alias remove='sudo dnf remove'
   alias clean='sudo dnf autoremove'
   alias dbox='distrobox'
-  
+  alias update-grub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg'
+  alias update-initramfs='sudo dracut --regenerate-all --force -v'
+
   # Set up NVM if manually installed via curl/git, otherwise handle default path
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -167,7 +170,7 @@ export GOPATH=$HOME/.go
 if [[ "$os_id" == "macos" ]]; then
   export PATH=$PATH:$GOPATH/bin
 else
-  # Linux specific Go resolution path fallback 
+  # Linux specific Go resolution path fallback
   [[ -d "/usr/lib/go" ]] && export GOROOT=/usr/lib/go
   [[ -d "/usr/lib64/golang" ]] && export GOROOT=/usr/lib64/golang # Fedora specific location
   export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
