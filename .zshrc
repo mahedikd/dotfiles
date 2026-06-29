@@ -176,7 +176,7 @@ else
   export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 fi
 
-export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.npm-global/bin:$PATH
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export ANDROID_HOME=$HOME/Android/sdk
