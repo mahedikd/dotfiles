@@ -229,3 +229,11 @@ fw_update() {
   # --assume-yes passes confirmations, but fwupdmgr will still prompt if a reboot is needed
   sudo fwupdmgr upgrade --assume-yes
 }
+
+# Battery cycle count
+battery_cycle() {
+  for bat in /sys/class/power_supply/BAT*; do
+    [[ -f "$bat/cycle_count" ]] || continue
+    printf "%s: %s cycles\n" "${bat##*/}" "$(<"$bat/cycle_count")"
+  done
+}
