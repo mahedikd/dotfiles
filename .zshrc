@@ -28,13 +28,13 @@ TMUX_PLUGIN_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/tmux/plugins/tpm"
 source "${ZINIT_HOME}/zinit.zsh"
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit light hlissner/zsh-autopair
 zinit light kutsan/zsh-system-clipboard
 zinit light MichaelAquilina/zsh-you-should-use
+zinit light zsh-users/zsh-syntax-highlighting
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
@@ -78,6 +78,7 @@ else
   alias ls='ls --color'
   alias ll='ls -la --color'
   alias cpufreq='watch -n 1 sudo cpupower -c all frequency-info --freq -m'
+  alias drop-cache='sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches'
 fi
 alias vim='nvim'
 alias vi='nvim'
@@ -127,6 +128,7 @@ fedora)
   alias dbox='distrobox'
   alias update-grub='sudo grub2-mkconfig -o /boot/grub2/grub.cfg'
   alias update-initramfs='sudo dracut --regenerate-all --force -v'
+  alias flatup='flatpak update && flatpak uninstall --unused'
 
   # Set up NVM if manually installed via curl/git, otherwise handle default path
   export NVM_DIR="$HOME/.nvm"
@@ -206,4 +208,24 @@ nvme_stats() {
     echo "Error: Unsupported OS." >&2
     return 1
   fi
+}
+
+# Firmware updates via fwupdmgr
+fw_update() {
+  echo "=== [1/3] Refreshing firmware metadata ==="
+  if ! sudo fwupdmgr refresh --force; then
+    echo "Error: Failed to refresh metadata from Linux Vendor Firmware Service." >&2
+    return 1
+  fi
+
+  echo -e "\n=== [2/3] Checking for available updates ==="
+  if ! fwupdmgr get-updates; then
+    # fwupdmgr returns non-zero/error codes if no updates are available
+    echo "No firmware updates available at this time."
+    return 0
+  fi
+
+  echo -e "\n=== [3/3] Executing firmware upgrade ==="
+  # --assume-yes passes confirmations, but fwupdmgr will still prompt if a reboot is needed
+  sudo fwupdmgr upgrade --assume-yes
 }
