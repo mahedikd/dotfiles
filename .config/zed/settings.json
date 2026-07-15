@@ -14,7 +14,7 @@
     "tabWidth": 2,
     "useTabs": false,
   },
-  "show_edit_predictions": true,
+  "show_edit_predictions": false,
   "relative_line_numbers": "enabled",
   "outline_panel": { "dock": "right" },
   "git_panel": { "dock": "right" },
@@ -73,7 +73,7 @@
     "default_model": {
       "enable_thinking": true,
       "provider": "ollama",
-      "model": "fredrezones55/Gemma-4-Uncensored-HauhauCS-Aggressive:e4b",
+      "model": "openbmb/minicpm5:q8_0",
     },
   },
   "terminal": {
