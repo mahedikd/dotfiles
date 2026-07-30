@@ -2,6 +2,7 @@
   "debugger": {
     "dock": "bottom",
   },
+  "extend_comment_on_newline": false,
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "auto_update": false,
   "collaboration_panel": {
