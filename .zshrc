@@ -94,16 +94,15 @@ alias venv='source .venv/bin/activate'
 case "$os_id" in
 macos)
   alias update='brew update && brew upgrade'
-  alias install='brew install'
-  alias remove='brew uninstall'
-  alias clean='brew cleanup'
+  alias install='brew install --cask'
+  alias remove='brew uninstall --zap --cask'
+  alias clean='brew autoremove && brew cleanup --prune=all'
   # Faster Colima Management
   alias d='docker'
   alias dc='docker-compose'
   alias cstart='colima start --vm-type vz --mount-type virtiofs --vz-rosetta'
   alias cstop='colima stop'
   # Ensure tools can find the Docker socket
-  export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
   export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
@@ -237,3 +236,7 @@ battery_cycle() {
     printf "%s: %s cycles\n" "${bat##*/}" "$(<"$bat/cycle_count")"
   done
 }
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mahedi/.lmstudio/bin"
+# End of LM Studio CLI section

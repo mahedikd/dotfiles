@@ -70,11 +70,11 @@
   },
   "agent": {
     "dock": "right",
-    "default_profile": "ask",
+    "default_profile": "minimal",
     "default_model": {
       "enable_thinking": true,
-      "provider": "ollama",
-      "model": "openbmb/minicpm5:q8_0",
+      "provider": "openrouter",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
     },
   },
   "terminal": {
