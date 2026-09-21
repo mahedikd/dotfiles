@@ -11,8 +11,7 @@
     "quick_actions": false,
   },
   "inlay_hints": {
-    "show_background": false,
-    "enabled": true,
+    "enabled": false,
   },
   "debugger": {
     "dock": "bottom",
