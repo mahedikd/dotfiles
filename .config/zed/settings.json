@@ -1,4 +1,19 @@
 {
+  "terminal": {
+    "shell": "system",
+    "env": {
+      "LD_LIBRARY_PATH": "",
+      "LD_PRELOAD": "",
+    },
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+  },
+  "inlay_hints": {
+    "show_background": false,
+    "enabled": true,
+  },
   "debugger": {
     "dock": "bottom",
   },
@@ -75,13 +90,6 @@
       "enable_thinking": true,
       "provider": "openrouter",
       "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    },
-  },
-  "terminal": {
-    "shell": "system",
-    "env": {
-      "LD_LIBRARY_PATH": "",
-      "LD_PRELOAD": "",
     },
   },
 }
