@@ -1,14 +1,20 @@
 {
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "catppuccin-icons": true,
+  },
+  "icon_theme": "Catppuccin Macchiato",
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Macchiato",
+    "dark": "Catppuccin Macchiato",
+  },
   "terminal": {
     "shell": "system",
     "env": {
       "LD_LIBRARY_PATH": "",
       "LD_PRELOAD": "",
     },
-  },
-  "toolbar": {
-    "breadcrumbs": false,
-    "quick_actions": false,
   },
   "inlay_hints": {
     "enabled": false,
@@ -37,12 +43,6 @@
   "vim_mode": true,
   "ui_font_size": 16,
   "buffer_font_size": 15,
-  "icon_theme": "Catppuccin Macchiato",
-  "theme": {
-    "mode": "system",
-    "light": "Catppuccin Macchiato",
-    "dark": "Catppuccin Macchiato",
-  },
   "base_keymap": "VSCode",
   "minimap": { "show": "never" },
   "soft_wrap": "editor_width",
