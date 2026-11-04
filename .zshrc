@@ -140,24 +140,53 @@ kali | ubuntu)
   alias install='sudo apt install'
   alias remove='sudo apt purge'
   alias clean='sudo apt autoremove && sudo apt autoclean && sudo apt clean'
+
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
   UV_LOCATION="${HOME}/.local/bin/uv"
-  NVM_HOME="${HOME}/.nvm"
+  [[ -x "$UV_LOCATION" ]] || curl -LsSf https://astral.sh/uv/install.sh | sh
 
-  [[ -f "$UV_LOCATION" ]] || curl -LsSf https://astral.sh/uv/install.sh | sh
+  NVM_HOME="${HOME}/.nvm"
   [[ -d "$NVM_HOME" ]] || curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-  if [[ "$os_id" == "ubuntu" ]]; then
-    NVIM_LOCATION="/opt/nvim-linux-x86_64/bin"
-    if [[ ! -d "$NVIM_LOCATION" ]]; then
-      curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-      sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+  # Neovim (Architecture-aware)
+  case "$(uname -m)" in
+    x86_64)
+      NVIM_ARCH="x86_64"
+      ;;
+    aarch64|arm64)
+      NVIM_ARCH="arm64"
+      ;;
+    *)
+      NVIM_ARCH=""
+      print -u2 "Unsupported architecture: $(uname -m)"
+      ;;
+  esac
+
+  if [[ -n "$NVIM_ARCH" ]]; then
+    NVIM_LOCATION="/opt/nvim-linux-${NVIM_ARCH}/bin"
+    NVIM_ARCHIVE="/tmp/nvim-linux-${NVIM_ARCH}.tar.gz"
+
+    if [[ ! -x "$NVIM_LOCATION/nvim" ]]; then
+      print "Installing Neovim for ${NVIM_ARCH}..."
+
+      if curl -fL --retry 3 -o "$NVIM_ARCHIVE" \
+        "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${NVIM_ARCH}.tar.gz"; then
+
+        if sudo tar -C /opt -xzf "$NVIM_ARCHIVE"; then
+          rm -f "$NVIM_ARCHIVE"
+        else
+          print -u2 "Neovim extraction failed."
+        fi
+      else
+        print -u2 "Neovim download failed."
+      fi
     fi
-    export PATH="$PATH:$NVIM_LOCATION"
+
+    [[ -x "$NVIM_LOCATION/nvim" ]] && export PATH="$NVIM_LOCATION:$PATH"
   fi
   ;;
 esac
