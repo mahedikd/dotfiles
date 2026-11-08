@@ -20,3 +20,4 @@ go
 .config/Antigravity
 .config/crossnote
 .config/gopls/prompt
+/.config/clerk

@@ -266,6 +266,3 @@ battery_cycle() {
   done
 }
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/mahedi/.lmstudio/bin"
-# End of LM Studio CLI section
