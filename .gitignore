@@ -21,3 +21,4 @@ go
 .config/crossnote
 .config/gopls/prompt
 /.config/clerk
+/.config/zed/prompts
